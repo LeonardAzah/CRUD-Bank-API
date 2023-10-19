@@ -12,7 +12,7 @@ const {
 } = require("../utils");
 const crypto = require("crypto");
 
-const origin = "http://localhost:5000";
+const origin = "https://bank-api-un4c.onrender.com";
 
 const register = async (req, res) => {
   const { email, name, dateOfBirth, phone, password } = req.body;
