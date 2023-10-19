@@ -12,10 +12,9 @@ const errorHandlerMiddleware = require("./src/middleware/error-handler");
 const notFound = require("./src/middleware/not-found");
 
 const authRoutes = require("./src/routes/authRoutes");
-// const userRoutes = require("./src/routes/userRoutes");
-// const productRoutes = require("./src/routes/productRoutes");
-// const reviewRoutes = require("./src/routes/reviewRoutes");
-// const orderRoutes = require("./src/routes/orderRoutes");
+const userRoutes = require("./src/routes/userRoutes");
+const bankRoutes = require("./src/routes/bankRoutes");
+const loanRoutes = require("./src/routes/loanRoutes");
 
 const app = express();
 
@@ -38,10 +37,9 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/v1/auth", authRoutes);
-// app.use("/api/v1/users", userRoutes);
-// app.use("/api/v1/products", productRoutes);
-// app.use("/api/v1/reviews", reviewRoutes);
-// app.use("/api/v1/orders", orderRoutes);
+app.use("/api/v1/users", userRoutes);
+app.use("/api/v1/banks", bankRoutes);
+app.use("/api/v1/loans", loanRoutes);
 
 app.use(notFound);
 app.use(errorHandlerMiddleware);

@@ -6,6 +6,8 @@ const sendVerificationEmail = require("./sendVerificationEmail");
 const sendResetPasswordEmail = require("./sendResetPasswordEmail");
 const createHash = require("./createHash");
 const paginate = require("./paginate");
+const passwordValidator = require("./passwordValidator");
+const { sendApprovedMail, sendDeclinedMail } = require("./sendLoanMail");
 
 module.exports = {
   createJWT,
@@ -17,4 +19,7 @@ module.exports = {
   sendResetPasswordEmail,
   createHash,
   paginate,
+  passwordValidator,
+  sendApprovedMail,
+  sendDeclinedMail,
 };

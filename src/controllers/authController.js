@@ -8,6 +8,7 @@ const {
   sendVerificationEmail,
   sendResetPasswordEmail,
   createHash,
+  passwordValidator,
 } = require("../utils");
 const crypto = require("crypto");
 
@@ -19,6 +20,14 @@ const register = async (req, res) => {
   const emailAlreadyExists = await User.findOne({ email });
   if (emailAlreadyExists) {
     throw new CustomError.BadRequestError("Email already exists");
+  }
+
+  verifyPassword = await passwordValidator(password);
+
+  if (verifyPassword === false) {
+    throw new CustomError.BadRequestError(
+      "Password most starts with a capital letter, numbers, special character and be at least 8 character long"
+    );
   }
 
   const verificationToken = crypto.randomBytes(40).toString("hex");
@@ -50,6 +59,14 @@ const registerAdmin = async (req, res) => {
   const emailAlreadyExists = await User.findOne({ email });
   if (emailAlreadyExists) {
     throw new CustomError.BadRequestError("Email already exists");
+  }
+
+  verifyPassword = await passwordValidator(password);
+
+  if (verifyPassword === false) {
+    throw new CustomError.BadRequestError(
+      "Password most starts with a capital letter, numbers, special character and be at least 8 character long"
+    );
   }
 
   const role = "admin";

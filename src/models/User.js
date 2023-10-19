@@ -7,6 +7,7 @@ const UserSchema = new mongoose.Schema({
     required: [true, "Please provide name"],
     minlength: 3,
     maxlength: 50,
+    trim: true,
   },
   email: {
     type: String,
@@ -16,6 +17,7 @@ const UserSchema = new mongoose.Schema({
       message: "Please provide valid email",
     },
     unique: true,
+    trim: true,
   },
   dateOfBirth: {
     type: Date,
@@ -23,14 +25,10 @@ const UserSchema = new mongoose.Schema({
   phone: {
     type: String,
   },
-  amount: {
-    type: Number,
-    default: 0,
-  },
   password: {
     type: String,
     required: [true, "Please provide password"],
-    minlength: 6,
+    minlength: 8,
   },
   role: {
     type: String,
